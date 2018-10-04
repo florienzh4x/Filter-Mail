@@ -24,81 +24,102 @@ fi
 # JALANKEUN
 
 # HOTMAIL
+Sie4a=0
 for hasilHotmail in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@hotmail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilHotmail" >> result/hotmail.txt
+	((Sie4a++))
 done
-echo "[+] Hotmail Total : $(cat result/hotmail.txt | wc -l)"
+echo "[+] Hotmail Total : $Sie4a"
 
 # OUTLOOK
+Woac7=0
 for hasiloutlook in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@outlook+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasiloutlook" >> result/outlook.txt
+	((Woac7++))
 done
-echo "[+] Outlook Total : $(cat result/outlook.txt | wc -l)"
+echo "[+] Outlook Total : $Woac7"
 
 # LIVE
+Oosh8=0
 for hasillive in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@live+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasillive" >> result/live.txt
+	((Oosh8++))
 done
-echo "[+] Live Mail Total : $(cat result/live.txt | wc -l)"
+echo "[+] Live Mail Total : $Oosh8"
 
 # MSN
+ib9Ie=0
 for hasilMSN in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@msn+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilMSN" >> result/msn.txt
+	((ib9Ie++))
 done
-echo "[+] MSN Mail Total : $(cat result/msn.txt | wc -l)"
+echo "[+] MSN Mail Total : $ib9Ie"
 
 # GMAIL
-ngitungGMAIL=0
+Ohx5a=0
 for hasilGMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGMAIL" >> result/gmail.txt
+	((Ohx5a++))
 done
-echo "[+] Gmail Total : $(cat result/gmail.txt | wc -l)"
+echo "[+] Gmail Total : $Ohx5a"
 
 # GOOGLEMAIL
+Zei8a=0
 for hasilGOOGLEMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@googlemail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGOOGLEMAIL" >> result/googlemail.txt
+	((Zei8a++))
 done
-echo "[+] Googlemail Total : $(cat result/googlemail.txt | wc -l)"
+echo "[+] Googlemail Total : $Zei8a"
 
-
+aMaz6=0
 for hasilYAHOO in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yahoo+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYAHOO" >> result/yahoo.txt
+	((aMaz6++))
 done
-echo "[+] Yahoo Total : $(cat result/yahoo.txt | wc -l)"
+echo "[+] Yahoo Total : $aMaz6"
 
-
+Sahn5=0
 for hasilYMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@ymail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYMAIL" >> result/ymail.txt
+	((Sahn5++))
 done
-echo "[+] Ymail Total : $(cat result/ymail.txt | wc -l)"
+echo "[+] Ymail Total : $Sahn5"
 
-
+ON1uR=0
 for hasilAOL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@aol+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilAOL" >> result/aol.txt
+	((ON1uR++))
 done
-echo "[+] Aol Total : $(cat result/aol.txt | wc -l)"
+echo "[+] Aol Total : $ON1uR"
 
-
+Iek5G=0
 for hasilYANDEX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yandex+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYANDEX" >> result/yandex.txt
+	((Iek5G++))
 done
-echo "[+] Yandex Total : $(cat result/yandex.txt | wc -l)"
+echo "[+] Yandex Total : $Iek5G"
 
+Ogha1=0
 for hasilGMX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmx+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGMX" >> result/gmx.txt
+	((Ogha1++))
 done
-echo "[+] Gmx Total : $(cat result/gmx.txt | wc -l)"
+echo "[+] Gmx Total : $Ogha1"
 
-for hasilMAILRU in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@mail+\.[a-zA-Z0-9.-]+\b"); do
+aiP2l=0
+for hasilMAILRU in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@mail.ru\b"); do
 	echo "$hasilMAILRU" >> result/mailru.txt
+	((aiP2l++))
 done
-echo "[+] Mail.ru Total : $(cat result/mailru.txt | wc -l)"
+echo "[+] Mail.ru Total : $aiP2l"
 
 # Other
-for hasilOTHER in $(cat $listnya | grep -v "@gmx." | grep -v "@mail." | grep -v "@hotmail." | grep -v "@outlook." | grep -v "@live." | grep -v "@yahoo." | grep -v "@ymail." | grep -v "@gmail." | grep -v "@googlemail." | grep -v "@aol." | grep -v "@yandex."); do
+uTeJ7=0
+for hasilOTHER in $(cat $listnya | grep -v "@gmx." | grep -v "@mail.ru" | grep -v "@hotmail." | grep -v "@outlook." | grep -v "@live." | grep -v "@yahoo." | grep -v "@ymail." | grep -v "@gmail." | grep -v "@googlemail." | grep -v "@aol." | grep -v "@yandex."); do
 	echo "$hasilOTHER" >> result/other.txt
+	((uTeJ7++))
 done
-echo "[+] Other Total : $(cat result/other.txt | wc -l)"
+echo "[+] Other Total : $uTeJ7"
 
 read -p "Compress result? [y/n]: " kompres;
 ngecilin=$(echo $kompres | tr '[:upper:]' '[:lower:]')

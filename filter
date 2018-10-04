@@ -41,6 +41,12 @@ for hasillive in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@live+\.[a-zA-Z
 done
 echo "[+] Live Mail Total : $(cat result/live.txt | wc -l)"
 
+# MSN
+for hasilMSN in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@msn+\.[a-zA-Z0-9.-]+\b"); do
+	echo "$hasilMSN" >> result/msn.txt
+done
+echo "[+] MSN Mail Total : $(cat result/msn.txt | wc -l)"
+
 # GMAIL
 ngitungGMAIL=0
 for hasilGMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmail+\.[a-zA-Z0-9.-]+\b"); do

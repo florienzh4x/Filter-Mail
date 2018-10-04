@@ -4,8 +4,11 @@ echo ""
 printf "List Files : "; ls;
 read -p "List Email : " listnya;
 
-# CLEANING LISTNYA 
+# CLEANING LIST 
 sed -i 's/\r//' $listnya
+cat $listnya | grep -Eo '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i >> ${listnya}_tmp
+mv ${listnya}_tmp ${listnya}
+
 
 # BIKIN FOLDER
 
@@ -16,72 +19,84 @@ fi
 # JALANKEUN
 
 # HOTMAIL
-for hasilHotmail in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@hotmail+\.[a-zA-Z0-9.-]+\b"); do
+for hasilHotmail in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@hotmail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilHotmail" >> result/hotmail.txt
 done
 echo "[+] Hotmail Total : $(cat result/hotmail.txt | wc -l)"
 
 # OUTLOOK
-for hasiloutlook in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@outlook+\.[a-zA-Z0-9.-]+\b"); do
+for hasiloutlook in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@outlook+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasiloutlook" >> result/outlook.txt
 done
 echo "[+] Outlook Total : $(cat result/outlook.txt | wc -l)"
 
 # LIVE
-for hasillive in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@live+\.[a-zA-Z0-9.-]+\b"); do
+for hasillive in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@live+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasillive" >> result/live.txt
 done
 echo "[+] Live Mail Total : $(cat result/live.txt | wc -l)"
 
 # GMAIL
 ngitungGMAIL=0
-for hasilGMAIL in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@gmail+\.[a-zA-Z0-9.-]+\b"); do
+for hasilGMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGMAIL" >> result/gmail.txt
 done
 echo "[+] Gmail Total : $(cat result/gmail.txt | wc -l)"
 
 # GOOGLEMAIL
-for hasilGOOGLEMAIL in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@googlemail+\.[a-zA-Z0-9.-]+\b"); do
+for hasilGOOGLEMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@googlemail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGOOGLEMAIL" >> result/googlemail.txt
 done
 echo "[+] Googlemail Total : $(cat result/googlemail.txt | wc -l)"
 
-
-for hasilYAHOO in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@yahoo+\.[a-zA-Z0-9.-]+\b"); do
+# YAHOO
+for hasilYAHOO in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yahoo+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYAHOO" >> result/yahoo.txt
 done
 echo "[+] Yahoo Total : $(cat result/yahoo.txt | wc -l)"
 
-
-for hasilYMAIL in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@ymail+\.[a-zA-Z0-9.-]+\b"); do
+# YMAIL
+for hasilYMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@ymail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYMAIL" >> result/ymail.txt
 done
 echo "[+] Ymail Total : $(cat result/ymail.txt | wc -l)"
 
-
-for hasilAOL in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@aol+\.[a-zA-Z0-9.-]+\b"); do
+# AOL
+for hasilAOL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@aol+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilAOL" >> result/aol.txt
 done
 echo "[+] Aol Total : $(cat result/aol.txt | wc -l)"
 
-
-for hasilYANDEX in $(cat $listnya | grep -Eo "\b[a-zA-Z0-9.-]+@yandex+\.[a-zA-Z0-9.-]+\b"); do
+# YANDEX
+for hasilYANDEX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yandex+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYANDEX" >> result/yandex.txt
 done
 echo "[+] Yandex Total : $(cat result/yandex.txt | wc -l)"
 
+# GMX
+for hasilGMX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmx+\.[a-zA-Z0-9.-]+\b"); do
+	echo "$hasilGMX" >> result/gmx.txt
+done
+echo "[+] Gmx Total : $(cat result/gmx.txt | wc -l)"
+
+# MAIL.RU
+for hasilMAILRU in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@mail+\.[a-zA-Z0-9.-]+\b"); do
+	echo "$hasilMAILRU" >> result/mailru.txt
+done
+echo "[+] Mail.ru Total : $(cat result/mailru.txt | wc -l)"
+
 # Other
-for hasilOTHER in $(cat $listnya | grep -v "hotmail." | grep -v "outlook." | grep -v "live." | grep -v "yahoo." | grep -v "ymail." | grep -v "gmail." | grep -v "googlemail." | grep -v "aol." | grep -v "yandex."); do
+for hasilOTHER in $(cat $listnya | grep -v "@gmx." | grep -v "@mail." | grep -v "@hotmail." | grep -v "@outlook." | grep -v "@live." | grep -v "@yahoo." | grep -v "@ymail." | grep -v "@gmail." | grep -v "@googlemail." | grep -v "@aol." | grep -v "@yandex."); do
 	echo "$hasilOTHER" >> result/other.txt
 done
 echo "[+] Other Total : $(cat result/other.txt | wc -l)"
 
-read -p "Compress result? (y/n)" kompres;
+read -p "Compress result? [y/n]: " kompres;
 ngecilin=$(echo $kompres | tr '[:upper:]' '[:lower:]')
 if [[ $ngecilin == "y" ]]; then
 	zip -q -r result.zip result
-	echo "ALL DONE"
+	echo "\nALL DONE\n"
 else
-	echo "ALL DONE"
+	echo "\nALL DONE\n"
 	exit 1;
 fi

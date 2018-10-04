@@ -4,11 +4,16 @@ echo ""
 printf "List Files : "; ls;
 read -p "List Email : " listnya;
 
-# CLEANING LIST 
+# CLEANING LISTNYA 
 sed -i 's/\r//' $listnya
 cat $listnya | grep -Eo '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | sort | uniq -i >> ${listnya}_tmp
+rm -rf ${listnya}
 mv ${listnya}_tmp ${listnya}
-
+echo ""
+echo "[+] Found $(cat $listnya | wc -l) Emails in $listnya"
+echo ""
+echo "[!] Filtering.... "
+echo ""
 
 # BIKIN FOLDER
 
@@ -49,37 +54,35 @@ for hasilGOOGLEMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@googlema
 done
 echo "[+] Googlemail Total : $(cat result/googlemail.txt | wc -l)"
 
-# YAHOO
+
 for hasilYAHOO in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yahoo+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYAHOO" >> result/yahoo.txt
 done
 echo "[+] Yahoo Total : $(cat result/yahoo.txt | wc -l)"
 
-# YMAIL
+
 for hasilYMAIL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@ymail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYMAIL" >> result/ymail.txt
 done
 echo "[+] Ymail Total : $(cat result/ymail.txt | wc -l)"
 
-# AOL
+
 for hasilAOL in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@aol+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilAOL" >> result/aol.txt
 done
 echo "[+] Aol Total : $(cat result/aol.txt | wc -l)"
 
-# YANDEX
+
 for hasilYANDEX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@yandex+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilYANDEX" >> result/yandex.txt
 done
 echo "[+] Yandex Total : $(cat result/yandex.txt | wc -l)"
 
-# GMX
 for hasilGMX in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@gmx+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilGMX" >> result/gmx.txt
 done
 echo "[+] Gmx Total : $(cat result/gmx.txt | wc -l)"
 
-# MAIL.RU
 for hasilMAILRU in $(cat $listnya | grep -Eo "\b[[:alnum:]+\.\_\-]*@mail+\.[a-zA-Z0-9.-]+\b"); do
 	echo "$hasilMAILRU" >> result/mailru.txt
 done
@@ -95,8 +98,12 @@ read -p "Compress result? [y/n]: " kompres;
 ngecilin=$(echo $kompres | tr '[:upper:]' '[:lower:]')
 if [[ $ngecilin == "y" ]]; then
 	zip -q -r result.zip result
-	echo "\nALL DONE\n"
+	echo
+	echo "ALL DONE"
+	echo
 else
-	echo "\nALL DONE\n"
+	echo
+	echo "ALL DONE"
+	echo
 	exit 1;
 fi

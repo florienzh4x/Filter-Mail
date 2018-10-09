@@ -115,7 +115,7 @@ echo "[+] Mail.ru Total : $aiP2l"
 
 # Other
 uTeJ7=0
-for hasilOTHER in $(cat $listnya | grep -v "@gmx." | grep -v "@mail.ru" | grep -v "@hotmail." | grep -v "@outlook." | grep -v "@live." | grep -v "@yahoo." | grep -v "@ymail." | grep -v "@gmail." | grep -v "@googlemail." | grep -v "@aol." | grep -v "@yandex."); do
+for hasilOTHER in $(cat $listnya | grep -v "@msn." | grep -v "@gmx." | grep -v "@mail.ru" | grep -v "@hotmail." | grep -v "@outlook." | grep -v "@live." | grep -v "@yahoo." | grep -v "@ymail." | grep -v "@gmail." | grep -v "@googlemail." | grep -v "@aol." | grep -v "@yandex."); do
 	echo "$hasilOTHER" >> result/other.txt
 	((uTeJ7++))
 done

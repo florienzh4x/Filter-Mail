@@ -6,7 +6,7 @@ read -p "List Email : " listnya;
 
 # CLEANING LISTNYA 
 sed -i 's/\r//' $listnya
-cat $listnya | grep -Eo '[[:alnum:]+\.\_\-]*@[[:alnum:]+\.\_\-]*' | tr '[:upper:]' '[:lower:]' | sort | uniq -i >> ${listnya}_tmp
+grep -Eiorh '([[:alnum:]_.-]+@[[:alnum:]_.-]+?\.[[:alpha:].]{2,6})' $listnya | tr '[:upper:]' '[:lower:]' | sort | uniq > ${listnya}_tmp
 rm -rf ${listnya}
 mv ${listnya}_tmp ${listnya}
 echo ""
